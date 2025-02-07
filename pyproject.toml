@@ -1,16 +1,13 @@
 [project]
 name = "minja"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.0.0"
+description = "A Mini Jinja Template Engine"
 readme = "README.md"
 authors = [
     { name = "Hai Vu", email = "haivu2004@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = []
-
-# [project.scripts]
-# minja = "minja.main:main"
 
 [build-system]
 requires = ["hatchling"]
