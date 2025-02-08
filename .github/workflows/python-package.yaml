@@ -35,8 +35,7 @@ jobs:
         uv sync --dev
 
     - name: Static Analysis
-      run: |
-      	uv run ruff check .
+      run: uv run ruff check .
         
     - name: Run Tests
       run: |
