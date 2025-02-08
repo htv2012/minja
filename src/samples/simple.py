@@ -6,11 +6,11 @@ from minja import Template
 
 
 def main():
-    """ Entry """
+    """Entry"""
     template = Template("{{ flowers }} are {{ color }}")
     print(template.render(flowers="Roses", color="red"))
     # Roses are red
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
