@@ -1,4 +1,0 @@
-- Create Github action to make package
-- Create doc
-- Create Github action to publish help
-- Create samples
