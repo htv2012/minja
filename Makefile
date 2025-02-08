@@ -1,17 +1,13 @@
 .PHONY: all test run lint clean
 
 ### Default target(s)
-all: run
+all: test
 
 ### Perform static analysis
 lint:
 	uv tool run ruff check --select I --fix .
 	uv tool run ruff format .
 	uv tool run ruff check . --fix
-
-### Run the project
-run: lint
-	uv run python -m pydoc minja
 
 ### Run unit tests
 test: lint

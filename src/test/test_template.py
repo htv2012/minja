@@ -13,7 +13,7 @@ def template_text():
 
 
 @pytest.fixture
-def flowers_template():
+def flowers_template(template_text):
     return Template(template_text)
 
 
