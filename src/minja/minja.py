@@ -26,7 +26,7 @@ NAME_PATTERN = re.compile(
 
 
 def _create_replace_function(mapping: dict):
-    def replace(match: re.Match):
+    def replace(match: re.Match) -> str:
         key = match[1]
         return str(mapping[key])
 
