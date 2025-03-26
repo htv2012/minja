@@ -35,7 +35,9 @@ jobs:
         uv sync --dev
 
     - name: Static Analysis
-      run: uv run ruff check .
+      run: |
+        uv run ruff check .
+        uv run mypy src
         
     - name: Run Tests
       run: |
