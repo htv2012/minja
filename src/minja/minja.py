@@ -1,5 +1,5 @@
 """
-Implement a simple template rendering because the default string.Template in
+Implement a simple template rendering because the default string. Template in
 Python versions prior to 3.11 is did not provide a way to get the names of the
 variables.  The name `minja` means to be a mini jinja engine.
 """
@@ -41,7 +41,12 @@ class Template:
 
     @property
     def names(self):
+        """Return a list of names used in the template."""
         return set(NAME_PATTERN.findall(self.text))
 
     def render(self, **kwargs):
+        """Renter the template into an actual string.
+
+        :returns: The text with all names rendered.
+        """
         return NAME_PATTERN.sub(_create_replace_function(kwargs), self.text)
