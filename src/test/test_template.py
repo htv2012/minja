@@ -92,6 +92,13 @@ def test_update_text():
             "Roses are red",
             id="with spaces",
         ),
+        pytest.param(
+            "{{flowers}} are {{color}}",
+            dict(flowers="Roses", color="red"),
+            "Roses are red",
+            id="without spaces",
+        ),
+        pytest.param("Hello", {}, "Hello", id="no variables"),
         pytest.param("{{}}", {}, "{{}}", id="empty braces"),
         pytest.param("{{b}}, {{i}}", dict(b=True, i=19), "True, 19", id="non string"),
     ],
