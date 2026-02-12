@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath("../../src"))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "minja"
-copyright = "2025, Hai Vu"
+copyright = "2025-2026, Hai Vu"
 author = "Hai Vu"
 release = "1.1.2"
 
@@ -32,4 +32,4 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "alabaster"
-html_static_path = ["_static"]
+# html_static_path = ["_static"]

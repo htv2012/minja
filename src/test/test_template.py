@@ -4,7 +4,7 @@ Test the Template class.
 
 import pytest
 
-from minja import Template
+from minja import Template, render
 
 
 @pytest.fixture
@@ -81,3 +81,20 @@ def test_update_text():
 
     template.text = "{{ flowers }} are {{ color }}"
     assert template.names == {"flowers", "color"}
+
+
+@pytest.mark.parametrize(
+    "input_text, kwargs, expected",
+    [
+        pytest.param(
+            "{{ flowers }} are {{ color }}",
+            dict(flowers="Roses", color="red"),
+            "Roses are red",
+            id="with spaces",
+        ),
+        pytest.param("{{}}", {}, "{{}}", id="empty braces"),
+        pytest.param("{{b}}, {{i}}", dict(b=True, i=19), "True, 19", id="non string"),
+    ],
+)
+def test_render(input_text, kwargs, expected):
+    assert render(input_text, **kwargs) == expected
