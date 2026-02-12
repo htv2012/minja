@@ -8,7 +8,8 @@ lint:
 	uv tool run ruff check --select I --fix .
 	uv tool run ruff format .
 	uv tool run ruff check . --fix
-	uv run mypy src
+	uv run ty check src
+	uv run codespell src
 
 ### Run unit tests
 test: lint

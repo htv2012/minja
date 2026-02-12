@@ -171,3 +171,5 @@ cython_debug/
 .pypirc
 
 generated-source/
+
+.ruff_cache/

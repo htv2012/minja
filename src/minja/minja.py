@@ -1,18 +1,17 @@
 """
-Implement a simple template rendering because the default string. Template in
+Implement a simple template rendering because the default `string.Template` in
 Python versions prior to 3.11 is did not provide a way to get the names of the
 variables.  The name `minja` means to be a mini jinja engine.
 """
 
 import re
-from typing import Optional
 
 __all__ = ["Template"]
 
 
-NAME_PATTERN = re.compile(
+NAME_PATTERN: re.Pattern = re.compile(
     r"""
-    {{                 # openning double braces
+    {{                 # opening double braces
     \s*                # any number of white spaces
     (                  # begin group
         [a-zA-Z_]      # first char of variable
@@ -33,10 +32,19 @@ def _create_replace_function(mapping: dict):
     return replace
 
 
+def render(text: str, **kwargs) -> str:
+    """Render template text.
+
+    :returns: The text with all names rendered.
+    """
+    sub_func = _create_replace_function(kwargs)
+    return NAME_PATTERN.sub(sub_func, text)
+
+
 class Template:
     """A simple Jinja-like template rendering class."""
 
-    def __init__(self, text: Optional[str] = ""):
+    def __init__(self, text: str):
         self.text = text
 
     @property
@@ -49,4 +57,4 @@ class Template:
 
         :returns: The text with all names rendered.
         """
-        return NAME_PATTERN.sub(_create_replace_function(kwargs), self.text)
+        return render(self.text, **kwargs)
