@@ -11,7 +11,7 @@ __all__ = ["Template"]
 
 NAME_PATTERN: re.Pattern = re.compile(
     r"""
-    {{                 # openning double braces
+    {{                 # opening double braces
     \s*                # any number of white spaces
     (                  # begin group
         [a-zA-Z_]      # first char of variable
