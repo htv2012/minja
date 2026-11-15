@@ -88,19 +88,19 @@ def test_update_text():
     [
         pytest.param(
             "{{ flowers }} are {{ color }}",
-            dict(flowers="Roses", color="red"),
+            {"flowers": "Roses", "color": "red"},
             "Roses are red",
             id="with spaces",
         ),
         pytest.param(
             "{{flowers}} are {{color}}",
-            dict(flowers="Roses", color="red"),
+            {"flowers": "Roses", "color": "red"},
             "Roses are red",
             id="without spaces",
         ),
         pytest.param("Hello", {}, "Hello", id="no variables"),
         pytest.param("{{}}", {}, "{{}}", id="empty braces"),
-        pytest.param("{{b}}, {{i}}", dict(b=True, i=19), "True, 19", id="non string"),
+        pytest.param("{{b}}, {{i}}", {"b": True, "i": 19}, "True, 19", id="non string"),
     ],
 )
 def test_render(input_text, kwargs, expected):
