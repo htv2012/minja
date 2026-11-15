@@ -6,6 +6,9 @@ import pytest
 
 from minja import Template, render
 
+DEFAULT_DICT = {"flowers": "Roses", "color": "red"}
+EXPECTED = "Roses are red"
+
 
 @pytest.fixture
 def template_text():
@@ -87,16 +90,10 @@ def test_update_text():
     "input_text, kwargs, expected",
     [
         pytest.param(
-            "{{ flowers }} are {{ color }}",
-            {"flowers": "Roses", "color": "red"},
-            "Roses are red",
-            id="with spaces",
+            "{{ flowers }} are {{ color }}", DEFAULT_DICT, EXPECTED, id="with spaces"
         ),
         pytest.param(
-            "{{flowers}} are {{color}}",
-            {"flowers": "Roses", "color": "red"},
-            "Roses are red",
-            id="without spaces",
+            "{{flowers}} are {{color}}", DEFAULT_DICT, EXPECTED, id="without spaces"
         ),
         pytest.param("Hello", {}, "Hello", id="no variables"),
         pytest.param("{{}}", {}, "{{}}", id="empty braces"),
