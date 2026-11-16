@@ -1,3 +1,3 @@
 from .minja import Template, render
 
-__all__ = ["render", "Template"]
+__all__ = ["Template", "render"]
